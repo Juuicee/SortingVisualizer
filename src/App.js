@@ -9,6 +9,8 @@ function App() {
     setIsDarkMode(!isDarkMode);
   };
 
+  
+
   return (
     <div className={`App ${isDarkMode ? 'dark-mode' : ''}`}>
       <header className="App-header">
@@ -17,6 +19,7 @@ function App() {
         <button className="button">Quicksort</button>
         <button className="button">Bubblesort</button>
         <button className="button" onClick={toggleDarkMode}>Dark Mode</button>
+        <input type="range" min="12" max="48"/>
         </div>
       </header>
     </div>
@@ -24,5 +27,4 @@ function App() {
 }
 
 export default App;
-
 // Hello World Test
