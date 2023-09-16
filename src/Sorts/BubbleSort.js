@@ -1,7 +1,6 @@
 export function getBubbleSortAnimations(array){
     const animations = [];
     if(array.length <= 1) return array.slice(); // Base case
-
     const sortHelper = array.slice();
     
     return animations;
@@ -16,18 +15,16 @@ function bubbleSort(array, animations) {
             animations.push([j, j +1]);
 
             if(array[j] > array[j + 1]) {
-
                 // using animations to swap the elements
                 animations.push([j, array[j+1]]);
                 animations.push([j+1, array[j]]);
                 animations.push([j, j+1]);
-            } else{
-
+            } else {
                 animations.push([j, j+1]);
             }
-            }
-            }
         }
+    }
+}
 
     function swap(array, i, j) {
         const temp = array[i];
