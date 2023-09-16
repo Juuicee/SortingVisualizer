@@ -52,6 +52,10 @@ export default class SortingVisualizer extends React.Component{
         //to be implemented
     }
 
+    insertionSort(){
+        //to be implemented 
+    }
+
     render() {
         const {array} = this.state;
 
