@@ -1,4 +1,5 @@
 import React from 'react';
+import {getMergeSortAnimations} from './SortingVisualizer/sortingAlgorithms.js';
 import './SortingVisualizer.css';
 const FIRST_COLOR = 'purple';
 const SECOND_COLOR = 'green';
@@ -25,9 +26,29 @@ export default class SortingVisualizer extends React.Component{
         this.setState({array});
     }
 
-    mergeSort(){
-        //to be implemented
-    }
+    mergeSort() {
+        const animations = getMergeSortAnimations(this.state.array);
+        for (let i = 0; i < animations.length; i++) {
+          const arrayBars = document.getElementsByClassName('array-bar');
+          const isColorChange = i % 3 !== 2;
+          if (isColorChange) {
+            const [barOneIdx, barTwoIdx] = animations[i];
+            const barOneStyle = arrayBars[barOneIdx].style;
+            const barTwoStyle = arrayBars[barTwoIdx].style;
+            const color = i % 3 === 0 ? SECOND_COLOR : FIRST_COLOR;
+            setTimeout(() => {
+              barOneStyle.backgroundColor = color;
+              barTwoStyle.backgroundColor = color;
+            }, i * ANIM_SPEED);
+          } else {
+            setTimeout(() => {
+              const [barOneIdx, newHeight] = animations[i];
+              const barOneStyle = arrayBars[barOneIdx].style;
+              barOneStyle.height = `${newHeight}px`;
+            }, i * ANIM_SPEED);
+          }
+        }
+      }
 
     quickSort(){
         //to be implemented
@@ -88,3 +109,13 @@ export default class SortingVisualizer extends React.Component{
 function randomInt(min, max){
     return Math.floor(Math.random()*(max - min + 1) + min);
 }
+
+function arraysAreEqual(arrayOne, arrayTwo) {
+    if (arrayOne.length !== arrayTwo.length) return false;
+    for (let i = 0; i < arrayOne.length; i++) {
+      if (arrayOne[i] !== arrayTwo[i]) {
+        return false;
+      }
+    }
+    return true;
+  }
