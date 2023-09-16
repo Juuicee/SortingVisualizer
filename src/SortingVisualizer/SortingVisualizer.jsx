@@ -1,5 +1,7 @@
 import React from 'react';
 import './SortingVisualizer.css';
+import { getMergeSortAnimations } from '../Sorts/MergeSort';
+import { getQuickSortAnimations } from '../Sorts/QuickSort';
 
 const FIRST_COLOR = 'purple';
 const SECOND_COLOR = 'green';
@@ -28,10 +30,12 @@ export default class SortingVisualizer extends React.Component{
     }
 
     mergeSort(){
+        const animations = getMergeSortAnimations(this.state.array);
         //to be implemented
     }
 
     quickSort(){
+        const animations = getQuickSortAnimations(this.state.array);
         //to be implemented
     }
 
