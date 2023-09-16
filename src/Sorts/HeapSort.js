@@ -30,7 +30,7 @@ function heapfunc(array, size, i, animations){
         largest = right;   // If so , update largest index to be that of right node, to maintain the heap properties
     }
 
-    if (largest != i){      // If largest was changed throughout this process, it must be swapped 
+    if (largest !== i){      // If largest was changed throughout this process, it must be swapped 
         animations.push([i, largest]);  // Highlight elements to swap
         animations.push([i, largest]);  // Revert highlight
         swap(array, i, largest, animations); // Swap elements
