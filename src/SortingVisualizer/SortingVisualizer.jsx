@@ -2,6 +2,9 @@ import React from 'react';
 import './SortingVisualizer.css';
 import { getMergeSortAnimations } from '../Sorts/MergeSort';
 import { getQuickSortAnimations } from '../Sorts/QuickSort';
+import { getInsertionSortAnimations } from '../Sorts/InsertionSort';
+import { getHeapSortAnimations } from '../Sorts/HeapSort';
+import { getBubbleSortAnimations } from '../Sorts/BubbleSort';
 
 const FIRST_COLOR = 'purple';
 const SECOND_COLOR = 'green';
@@ -40,6 +43,7 @@ export default class SortingVisualizer extends React.Component{
     }
 
     heapSort(){
+        const animations = getHeapSortAnimations(this.state.array);
         //to be implemented
     }
 
@@ -53,6 +57,7 @@ export default class SortingVisualizer extends React.Component{
     }
 
     insertionSort(){
+        const animations = getInsertionSortAnimations(this.state.array);
         //to be implemented 
     }
 
