@@ -28,20 +28,6 @@
     box-sizing: border-box;
 }
   
-.SortingVisualizer{
-    background-color: #F1E8E6;
-    min-height: 100vh;
-    font-size: calc(10px + 2vmin);
-    color:#361d32;
-}
-  
-.SortingVisualizer.dark-mode{
-    background-color:#222831;
-    min-height: 100vh;
-    font-size: calc(10px + 2vmin);
-    color:#222831;
-}
-  
 .button {
     background-color:#361d32;
     color:#f1e8e6;
@@ -60,4 +46,23 @@
     transform: translateY(3px); 
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
 }
+
+.customSlider {
+    width: 10%;
+    height: 10px; 
+    background:#543c52;
+    border: none;
+    border-radius: 75px; 
+    outline: none;
+    appearance: none; 
+  }
+
+  .customSlider::-webkit-slider-thumb {
+    width: 25px; 
+    height: 25px; 
+    background-color: black; 
+    border: none;
+    border-radius: 70%; 
+    cursor: pointer;
+  }
   

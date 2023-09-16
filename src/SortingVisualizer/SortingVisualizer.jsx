@@ -1,5 +1,4 @@
 import React from 'react';
-import { useState } from 'react';
 import './SortingVisualizer.css';
 const FIRST_COLOR = 'purple';
 const SECOND_COLOR = 'green';
@@ -58,6 +57,7 @@ export default class SortingVisualizer extends React.Component{
                 <button className="button" onClick={() => this.heapSort()}>Heap Sort</button>
                 <button className="button" onClick={() => this.bubbleSort()}>Bubble Sort</button>
                 <button className="button" >Dark Mode</button>
+                <input type="range" min="10" max="100" className="customSlider"></input>
                 </div>
                 {array.map((value, idx) => (
                     
