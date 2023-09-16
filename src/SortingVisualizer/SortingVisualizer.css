@@ -1,7 +1,4 @@
-.array-contain {
-    left: 100 px;
-    position: absolute;
-}
+
 
 .array-bar {
     display: inline-block;
@@ -9,24 +6,36 @@
     width: 2px;
 }
 
-.ArrayBar {
+.array-contain {
+    position: absolute;
+    width: 100%;
+}
+
+.buttonBox{
     display: flex;
-    padding: 10px;
+    justify-content: center; 
+    align-items: center; 
+    padding: 15px;
     gap: 100px;
-    border: 2px solid rgba(84, 60, 82, 0.5); 
+    border: 2px solid rgba(84, 60, 82, 0.5);
     border-radius: 8px; 
-    justify-content: center;
     background: linear-gradient(to bottom,rgba(237, 210, 203, 0.1),rgba(237, 210, 203, 0.5));
+    position: fixed;
+    top: 7%; 
+    left: 0; 
+    width: 100%; 
+    transform: translateY(-50%); 
+    box-sizing: border-box;
 }
   
-.App{
+.SortingVisualizer{
     background-color: #F1E8E6;
     min-height: 100vh;
     font-size: calc(10px + 2vmin);
     color:#361d32;
 }
   
-.App.dark-mode{
+.SortingVisualizer.dark-mode{
     background-color:#222831;
     min-height: 100vh;
     font-size: calc(10px + 2vmin);
