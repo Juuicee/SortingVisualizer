@@ -44,6 +44,7 @@ export default class SortingVisualizer extends React.Component{
     }
 
     bubbleSort(){
+        const animations = getBubbleSortAnimations(this.state.array);
         //to be implemented
     }
 
