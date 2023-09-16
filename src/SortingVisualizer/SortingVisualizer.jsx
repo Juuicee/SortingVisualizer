@@ -57,10 +57,15 @@ export default class SortingVisualizer extends React.Component{
                 <button className="button" onClick={() => this.heapSort()}>Heap Sort</button>
                 <button className="button" onClick={() => this.bubbleSort()}>Bubble Sort</button>
                 <button className="button" >Dark Mode</button>
+                <div className = "sliders">
+                <p>Sort</p>
+                <input type="range" min="10" max="100" className="customSlider"></input>
+                <p>Volume</p>
                 <input type="range" min="10" max="100" className="customSlider"></input>
                 </div>
+                
+                </div>
                 {array.map((value, idx) => (
-                    
                     <div
                         className = "array-bar"
                         key = {idx}
@@ -76,7 +81,7 @@ export default class SortingVisualizer extends React.Component{
             </div>
             
         );
-        
+        <div>a</div>
     }
 
 }
