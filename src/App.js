@@ -22,10 +22,10 @@ function App() {
         <button className="button" onClick={toggleDarkMode}>Dark Mode</button>
         <button className="button2">Play</button>
         <button className="button2">Stop</button>
-        
         </div>
       </header>
     </div>
+    
   );
 }
 
