@@ -5,18 +5,12 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React Hello there hello 
-        </a>
+        <div className="ArrayBar">
+        <button className="button">Generate New Array</button>
+        <button className="button">Quicksort</button>
+        <button className="button">Bubblesort</button>
+        <button className="button">Dark Mode</button>
+        </div>
       </header>
     </div>
   );
