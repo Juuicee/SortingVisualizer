@@ -50,6 +50,12 @@ export default class SortingVisualizer extends React.component{
     render() {
         const {array} = this.state;
 
+        const [isDarkMode, setIsDarkMode] = useState(false);
+  
+        const toggleDarkMode = () => {
+            setIsDarkMode(!isDarkMode);
+        };
+
         return(
             <div className = "array-contain">
                 {array.map((value, idx) => (
@@ -72,23 +78,26 @@ export default class SortingVisualizer extends React.component{
 
 }
 
-function App() {
-    const [isDarkMode, setIsDarkMode] = useState(false);
-  
-    const toggleDarkMode = () => {
-      setIsDarkMode(!isDarkMode);
-    };
-  
-    return (
-      <div className={`App ${isDarkMode ? 'dark-mode' : ''}`}>
-        <header className="App-header">
-          <div className="ArrayBar">
-          <button className="button" onClick={toggleDarkMode}>Dark Mode</button>
-          </div>
-        </header>
-      </div>
-    );
-}
+/*function App() {
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  const toggleDarkMode = () => {
+    setIsDarkMode(!isDarkMode);
+  };
+
+  return (
+    <div className={`App ${isDarkMode ? 'dark-mode' : ''}`}>
+      <header className="App-header">
+        <div className="ArrayBar">
+        <button className="button">Generate New Array</button>
+        <button className="button">Quicksort</button>
+        <button className="button">Bubblesort</button>
+        <button className="button" onClick={toggleDarkMode}>Dark Mode</button>
+        </div>
+      </header>
+    </div>
+  );
+}*/
 
 function randomInt(min, max){
     return Math.floor(Math.random()*(max - min + 1) + min);
