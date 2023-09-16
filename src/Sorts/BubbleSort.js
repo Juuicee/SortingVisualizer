@@ -1,5 +1,5 @@
 export function getBubbleSortAnimations(array){
-    const animation = [];
+    const animations = [];
     if(array.length <= 1) return array.slice(); // Base case
     const len = array.length;
 
