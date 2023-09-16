@@ -5,6 +5,7 @@ import { getQuickSortAnimations } from '../Sorts/QuickSort';
 import { getInsertionSortAnimations } from '../Sorts/InsertionSort';
 import { getHeapSortAnimations } from '../Sorts/HeapSort';
 import { getBubbleSortAnimations } from '../Sorts/BubbleSort';
+import { getBogoSortAnimation } from '../Sorts/BogoSort';
 
 const FIRST_COLOR = 'purple';
 const SECOND_COLOR = 'green';
@@ -53,6 +54,7 @@ export default class SortingVisualizer extends React.Component{
     }
 
     bogoSort(){
+        const animations = getBogoSortAnimation(this.state.array);
         //to be implemented
     }
 
