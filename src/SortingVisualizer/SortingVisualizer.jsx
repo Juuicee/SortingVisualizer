@@ -4,7 +4,6 @@ import {getMergeSortAnimations} from './SortingAlgorithms';
 import './SortingVisualizer.css';
 const FIRST_COLOR = 'purple';
 const SECOND_COLOR = 'white';
-const ANIM_SPEED = 1;
 export default class SortingVisualizer extends React.Component{
     constructor(props){
         super(props);
@@ -14,6 +13,7 @@ export default class SortingVisualizer extends React.Component{
             constantValue: 730,
             secondValue: 10,
             numBars: 310,
+            animationSpeed: 1,
         };
     }
 
@@ -43,16 +43,22 @@ export default class SortingVisualizer extends React.Component{
             setTimeout(() => {
               barOneStyle.backgroundColor = color;
               barTwoStyle.backgroundColor = color;
-            }, i * ANIM_SPEED);
+            }, i * this.state.animationSpeed);
           } else {
             setTimeout(() => {
               const [barOneIdx, newHeight] = animations[i];
               const barOneStyle = arrayBars[barOneIdx].style;
               barOneStyle.height = `${newHeight}px`;
-            }, i * ANIM_SPEED);
+            }, i * this.state.animationSpeed);
           }
         }
     }
+
+    updateAnimationSpeed = (event) => {
+        const newSpeed = parseInt(event.target.value, 10);
+        this.setState({ animationSpeed: newSpeed });
+      };
+    
     updateSecondValue = (event) => {
         const newValue = parseInt(event.target.value, 10);
         this.setState({ secondValue: newValue }, () => {
@@ -86,12 +92,14 @@ export default class SortingVisualizer extends React.Component{
                   
               ))}
               <div className="buttonBox">
-            <button className="button" onClick={() => this.arrayReset()}>Generate New Array</button>
+            <button className="button" onClick={() => this.arrayReset()}>New Array</button>
             <button className="button" onClick={() => this.mergeSort()}>Merge Sort</button>
             <p className="description">Loglinear Complexity: {secondValue}</p>
             <input className="customSlider" type="range" min="10" max="730" value={secondValue} onChange={this.updateSecondValue}></input>
             <p className="description">Elements: {numBars} </p>
             <input className="customSlider" type="range" min="10" max="310" value={numBars} onChange={this.updateNumBars}></input>
+            <p className="description">Animation Speed: {this.state.animationSpeed}</p>
+            <input className="customSlider" type="range" min="1" max="10" value={this.state.animationSpeed} onChange={this.updateAnimationSpeed}></input>
                 </div>
                     </div>
             
