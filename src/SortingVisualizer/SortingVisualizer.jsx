@@ -57,6 +57,8 @@ export default class SortingVisualizer extends React.Component{
           }
         }
     }
+
+// Insertion Sort Animation 
     insertionSort(){
         const animations = getInsertionSortAnimations(this.state.array);
         for (let i = 0; i < animations.length; i++){
@@ -78,6 +80,8 @@ export default class SortingVisualizer extends React.Component{
           }
         }
       }
+
+// Change the value of the slowdown
     updateAnimationSpeed = (event) => {
         const newSpeed = parseInt(event.target.value, 10);
         this.setState({ animationSpeed: newSpeed });
