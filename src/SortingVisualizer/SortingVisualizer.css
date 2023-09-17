@@ -1,49 +1,27 @@
-.sliders{
-    display:flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-}
 
 .array-bar {
+    width: 2.35px;
     display: inline-block;
     margin: 0 1px;
-    width: 2px;
 }
 
 .array-contain {
     position: absolute;
-    width: 100%;
-    top: 100px;
+    left:100px;
 }
 
-.buttonBox{
-    display: flex;
-    justify-content: center; 
-    align-items: center; 
-    padding: 15px;
-    gap: 30px;
-    border: 2px solid rgba(84, 60, 82, 0.5);
-    border-radius: 8px; 
-    background: linear-gradient(to bottom,rgba(237, 210, 203, 0.1),rgba(237, 210, 203, 0.5));
-    position: absolute;
-    top: 7%; 
-    left: 0; 
-    width: 100%; 
-    transform: translateY(-50%); 
-    box-sizing: border-box;
-    box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+body{
+background-color: black;
 }
-  
+
 .button {
     background-color:#361d32;
     color:#f1e8e6;
-    width: 250px;
-    height: 100px;
+    padding: 10px 20px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     transition: transform 0.2s ease; 
-   font-size:  35px;
 }
   
 .button:hover {
@@ -53,27 +31,21 @@
 .button:active {
     transform: translateY(3px); 
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
-} 
+}
 
-
-
-
-.customSlider {
-    width: 85%;
-    height: 10px; 
-    background:#543c52;
-    border: none;
-    border-radius: 75px; 
-    outline: none;
-    appearance: none; 
-  }
-
-  .customSlider::-webkit-slider-thumb {
-    width: 25px; 
-    height: 25px; 
-    background-color: black; 
-    border: none;
-    border-radius: 70%; 
-    cursor: pointer;
-  }
-  
+.buttonBox{
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    padding: 15px;
+    gap: 100px;
+    border: 2px solid rgba(84, 60, 82, 0.5);
+    border-radius: 8px; 
+    background: linear-gradient(to bottom,rgba(237, 210, 203, 0.1),rgba(237, 210, 203, 0.5));
+    position: absolute;
+    top: 7%; 
+    left: 0; 
+    width: 100%; 
+    transform: translateY(-50%); 
+    box-sizing: border-box;
+}
