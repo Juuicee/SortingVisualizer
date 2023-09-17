@@ -1,23 +1,20 @@
 import React from 'react';
+import useState from 'react';
+import {getMergeSortAnimations} from './SortingAlgorithms';
 import './SortingVisualizer.css';
-import { getMergeSortAnimations } from '../Sorts/MergeSort';
-import { getQuickSortAnimations } from '../Sorts/QuickSort';
-import { getInsertionSortAnimations } from '../Sorts/InsertionSort';
-import { getHeapSortAnimations } from '../Sorts/HeapSort';
-import { getBubbleSortAnimations } from '../Sorts/BubbleSort';
-import { getBogoSortAnimation } from '../Sorts/BogoSort';
 
 const FIRST_COLOR = 'purple';
-const SECOND_COLOR = 'green';
-const NUM_BARS = 400;
-const ANIM_SPEED = 1;
-
+const SECOND_COLOR = 'white';
 export default class SortingVisualizer extends React.Component{
     constructor(props){
         super(props);
 
         this.state = {
             array: [],
+            constantValue: 730,
+            secondValue: 10,
+            numBars: 310,
+            animationSpeed: 1,
         };
     }
 
@@ -27,88 +24,80 @@ export default class SortingVisualizer extends React.Component{
 
     arrayReset(){
         const array = []
-        for(let i = 0; i < NUM_BARS; i++){
-            array.push(randomInt(10, 800));
+        const { constantValue, secondValue, numBars} = this.state;
+        for(let i = 0; i < numBars; i++){
+            array.push(randomInt(secondValue, constantValue));
         }
         this.setState({array});
     }
 
     mergeSort(){
-        const animations = getMergeSortAnimations(this.state.array);
         //to be implemented
     }
 
     quickSort(){
-        const animations = getQuickSortAnimations(this.state.array);
         //to be implemented
     }
 
     heapSort(){
-        const animations = getHeapSortAnimations(this.state.array);
         //to be implemented
     }
 
     bubbleSort(){
-        const animations = getBubbleSortAnimations(this.state.array);
         //to be implemented
     }
 
     bogoSort(){
-        const animations = getBogoSortAnimation(this.state.array);
         //to be implemented
     }
 
-    insertionSort(){
-        const animations = getInsertionSortAnimations(this.state.array);
-        //to be implemented 
-    }
-
     render() {
-        const {array} = this.state;
+        const {array, constantValue, secondValue, numBars} = this.state;
 
-        return(
-            <div className = "array-contain">
-                {array.map((value, idx) => (
-                    <div
-                        className = "array-bar"
-                        key = {idx}
-                        style = {{
-                            backgroundColor: FIRST_COLOR,
-                            height: '${value}px',
-                        }}></div>
-                ))}
-                <button onClick={() => this.arrayReset()}>Generate New Array</button>
-                <button onClick={() => this.mergeSort()}>Merge Sort</button>
-                <button onClick={() => this.quickSort()}>Quick Sort</button>
-                <button onClick={() => this.heapSort()}>Heap Sort</button>
-                <button onClick={() => this.bubbleSort()}>Bubble Sort</button>
-            </div>
-        );
-    }
-
-}
-
-/*function App() {
-  const [isDarkMode, setIsDarkMode] = useState(false);
-
-  const toggleDarkMode = () => {
-    setIsDarkMode(!isDarkMode);
-  };
-
-  return (
-    <div className={`App ${isDarkMode ? 'dark-mode' : ''}`}>
-      <header className="App-header">
-        <div className="ArrayBar">
-        <button className="button">Generate New Array</button>
-        <button className="button">Quicksort</button>
-        <button className="button">Bubblesort</button>
-        <button className="button" onClick={toggleDarkMode}>Dark Mode</button>
-        </div>
-      </header>
-    </div>
-  );
-}*/
-
+        return (
+            <div className="array-container">
+            
+              {array.map((value, idx) => (
+                
+                <div
+                  className="array-bar"
+                  key={idx}
+                  style={{
+                    backgroundColor: FIRST_COLOR,
+                    height: `${value}px`,
+                  }}>
+                  </div>
+                  
+              ))}
+              <div className="buttonBox">
+            <button className="button" onClick={() => this.arrayReset()}>New Array</button>
+            <button className="button" onClick={() => this.mergeSort()}>Merge Sort</button>
+            <p className="description">Loglinear Complexity: {secondValue}</p>
+            <input className="customSlider" type="range" min="10" max="730" value={secondValue} onChange={this.updateSecondValue}></input>
+            <p className="description">Elements: {numBars} </p>
+            <input className="customSlider" type="range" min="10" max="310" value={numBars} onChange={this.updateNumBars}></input>
+            <p className="description">Animation Slowdown: {this.state.animationSpeed}</p>
+            <input className="customSlider" type="range" min="1" max="10" value={this.state.animationSpeed} onChange={this.updateAnimationSpeed}></input>
+                </div>
+                    </div>
+            
+          );
+        }
+      }
 function randomInt(min, max){
     return Math.floor(Math.random()*(max - min + 1) + min);
 }
+
+function arraysAreEqual(arrayOne, arrayTwo) {
+    if (arrayOne.length !== arrayTwo.length) return false;
+    for (let i = 0; i < arrayOne.length; i++) {
+      if (arrayOne[i] !== arrayTwo[i]) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  
+  
+  

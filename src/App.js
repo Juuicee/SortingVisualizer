@@ -7,9 +7,8 @@ function App() {
     <div className="App">
         <SortingVisualizer></SortingVisualizer>
     </div>
+    
   );
 }
 
 export default App;
-
-// Hello World Test
