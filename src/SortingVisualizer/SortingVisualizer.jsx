@@ -2,7 +2,6 @@ import React from 'react';
 import useState from 'react';
 import {getMergeSortAnimations} from './SortingAlgorithms';
 import './SortingVisualizer.css';
-
 const FIRST_COLOR = 'purple';
 const SECOND_COLOR = 'white';
 export default class SortingVisualizer extends React.Component{
@@ -31,25 +30,48 @@ export default class SortingVisualizer extends React.Component{
         this.setState({array});
     }
 
-    mergeSort(){
-        //to be implemented
+    mergeSort() {
+        const animations = getMergeSortAnimations(this.state.array);
+        for (let i = 0; i < animations.length; i++) {
+          const arrayBars = document.getElementsByClassName('array-bar');
+          const isColorChange = i % 3 !== 2;
+          if (isColorChange) {
+            const [barOneIdx, barTwoIdx] = animations[i];
+            const barOneStyle = arrayBars[barOneIdx].style;
+            const barTwoStyle = arrayBars[barTwoIdx].style;
+            const color = i % 3 === 0 ? SECOND_COLOR : FIRST_COLOR;
+            setTimeout(() => {
+              barOneStyle.backgroundColor = color;
+              barTwoStyle.backgroundColor = color;
+            }, i * this.state.animationSpeed);
+          } else {
+            setTimeout(() => {
+              const [barOneIdx, newHeight] = animations[i];
+              const barOneStyle = arrayBars[barOneIdx].style;
+              barOneStyle.height = `${newHeight}px`;
+            }, i * this.state.animationSpeed);
+          }
+        }
     }
 
-    quickSort(){
-        //to be implemented
-    }
+    updateAnimationSpeed = (event) => {
+        const newSpeed = parseInt(event.target.value, 10);
+        this.setState({ animationSpeed: newSpeed });
+      };
+    
+    updateSecondValue = (event) => {
+        const newValue = parseInt(event.target.value, 10);
+        this.setState({ secondValue: newValue }, () => {
+          this.arrayReset(); 
+        });
+      };
 
-    heapSort(){
-        //to be implemented
-    }
-
-    bubbleSort(){
-        //to be implemented
-    }
-
-    bogoSort(){
-        //to be implemented
-    }
+      updateNumBars = (event) => {
+        const newValue = parseInt(event.target.value, 10);
+        this.setState({ numBars: newValue }, () => {
+          this.arrayReset(); 
+        });
+      };
 
     render() {
         const {array, constantValue, secondValue, numBars} = this.state;
@@ -97,7 +119,3 @@ function arraysAreEqual(arrayOne, arrayTwo) {
     }
     return true;
   }
-
-  
-  
-  
