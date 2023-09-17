@@ -98,7 +98,7 @@ export default class SortingVisualizer extends React.Component{
             <input className="customSlider" type="range" min="10" max="730" value={secondValue} onChange={this.updateSecondValue}></input>
             <p className="description">Elements: {numBars} </p>
             <input className="customSlider" type="range" min="10" max="310" value={numBars} onChange={this.updateNumBars}></input>
-            <p className="description">Animation Speed: {this.state.animationSpeed}</p>
+            <p className="description">Animation Slowdown: {this.state.animationSpeed}</p>
             <input className="customSlider" type="range" min="1" max="10" value={this.state.animationSpeed} onChange={this.updateAnimationSpeed}></input>
                 </div>
                     </div>
