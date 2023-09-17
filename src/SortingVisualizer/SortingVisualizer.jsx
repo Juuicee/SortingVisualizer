@@ -88,8 +88,10 @@ export default class SortingVisualizer extends React.Component{
               <div className="buttonBox">
             <button className="button" onClick={() => this.arrayReset()}>Generate New Array</button>
             <button className="button" onClick={() => this.mergeSort()}>Merge Sort</button>
-            <input className="slider" type="range" min="10" max="730" value={secondValue} onChange={this.updateSecondValue}></input>
-            <input className="slider" type="range" min="10" max="310" value={numBars} onChange={this.updateNumBars}></input>
+            <p className="description">Loglinear Complexity: {secondValue}</p>
+            <input className="customSlider" type="range" min="10" max="730" value={secondValue} onChange={this.updateSecondValue}></input>
+            <p className="description">Elements: {numBars} </p>
+            <input className="customSlider" type="range" min="10" max="310" value={numBars} onChange={this.updateNumBars}></input>
                 </div>
                     </div>
             
@@ -109,5 +111,7 @@ function arraysAreEqual(arrayOne, arrayTwo) {
     }
     return true;
   }
+
+  
   
   
