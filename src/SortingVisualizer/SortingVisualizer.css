@@ -1,4 +1,4 @@
-
+/*Style of the array graph*/
 .array-bar {
     width: 2.35px;
     display: inline-block;
@@ -9,11 +9,11 @@
     position: absolute;
     left:100px;
 }
-
+/*Style of the body of the website*/
 body{
 background-color: black;
 }
-
+/*Style of the button*/
 .button {
     font-size: 18px;
     width: 20%;
@@ -34,7 +34,7 @@ background-color: black;
     transform: translateY(3px); 
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
 }
-
+/*Style of the button box*/
 .buttonBox{
     display: flex;
     justify-content: center; 
@@ -51,7 +51,7 @@ background-color: black;
     transform: translateY(-50%); 
     box-sizing: border-box;
 }
-
+/*Style of the sliders*/
 .customSlider {
     width: 50%;
     height: 15px; 
@@ -70,7 +70,7 @@ background-color: black;
     border-radius: 70%; 
     cursor: pointer;
   }
-
+/*Style of text*/
   .description{
     font-size: 22px;
     text-shadow:1px 1px 2px pink;

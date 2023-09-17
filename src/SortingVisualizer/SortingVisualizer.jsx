@@ -2,12 +2,15 @@ import React from 'react';
 import useState from 'react';
 import {getMergeSortAnimations} from './SortingAlgorithms';
 import './SortingVisualizer.css';
+// Initial Declaration of Color Values
 const FIRST_COLOR = 'purple';
 const SECOND_COLOR = 'white';
+
+
 export default class SortingVisualizer extends React.Component{
     constructor(props){
         super(props);
-
+// Declare Values That Are Gonna Be Modified Throughout The Program
         this.state = {
             array: [],
             constantValue: 730,
@@ -20,7 +23,7 @@ export default class SortingVisualizer extends React.Component{
     componentMount(){
         this.resetArray();
     }
-
+// Function that generates the graph using the previously declared values
     arrayReset(){
         const array = []
         const { constantValue, secondValue, numBars} = this.state;
@@ -29,7 +32,7 @@ export default class SortingVisualizer extends React.Component{
         }
         this.setState({array});
     }
-
+// Function that uses the operations in sorting algorithm to execute the animation
     mergeSort() {
         const animations = getMergeSortAnimations(this.state.array);
         for (let i = 0; i < animations.length; i++) {
@@ -53,32 +56,31 @@ export default class SortingVisualizer extends React.Component{
           }
         }
     }
-
+// Change the value of the slowdown
     updateAnimationSpeed = (event) => {
         const newSpeed = parseInt(event.target.value, 10);
         this.setState({ animationSpeed: newSpeed });
       };
-    
+// Change the value of loglinear complexity
     updateSecondValue = (event) => {
         const newValue = parseInt(event.target.value, 10);
         this.setState({ secondValue: newValue }, () => {
           this.arrayReset(); 
         });
       };
-
+// Change the value of the number of bars in the graph
       updateNumBars = (event) => {
         const newValue = parseInt(event.target.value, 10);
         this.setState({ numBars: newValue }, () => {
           this.arrayReset(); 
         });
       };
-
+// Renders the graph and calls the values that can be modified
     render() {
         const {array, constantValue, secondValue, numBars} = this.state;
 
         return (
             <div className="array-container">
-            
               {array.map((value, idx) => (
                 
                 <div
@@ -106,6 +108,7 @@ export default class SortingVisualizer extends React.Component{
           );
         }
       }
+      // Random values for the graph generation
 function randomInt(min, max){
     return Math.floor(Math.random()*(max - min + 1) + min);
 }
