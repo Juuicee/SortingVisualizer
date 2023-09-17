@@ -2,7 +2,6 @@ import React from 'react';
 import useState from 'react';
 import {getMergeSortAnimations} from './SortingAlgorithms';
 import './SortingVisualizer.css';
-import soundEffect from './BlipSound.mp3';
 const FIRST_COLOR = 'purple';
 const SECOND_COLOR = 'white';
 const ANIM_SPEED = 1;
@@ -15,7 +14,6 @@ export default class SortingVisualizer extends React.Component{
             constantValue: 730,
             secondValue: 10,
             numBars: 310,
-            isSoundPlaying: false,
         };
     }
 
@@ -46,9 +44,6 @@ export default class SortingVisualizer extends React.Component{
               barOneStyle.backgroundColor = color;
               barTwoStyle.backgroundColor = color;
             }, i * ANIM_SPEED);
-            if (this.state.isSoundPlaying) {
-                this.playSoundEffect();
-              }
           } else {
             setTimeout(() => {
               const [barOneIdx, newHeight] = animations[i];
@@ -58,15 +53,6 @@ export default class SortingVisualizer extends React.Component{
           }
         }
     }
-
-    playSoundEffect() {
-        this.setState({ isSoundPlaying: true });
-      }
-      
-      stopSoundEffect() {
-        this.setState({ isSoundPlaying: false });
-      }
-
     updateSecondValue = (event) => {
         const newValue = parseInt(event.target.value, 10);
         this.setState({ secondValue: newValue }, () => {
