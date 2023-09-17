@@ -1,6 +1,7 @@
 import React from 'react';
 import useState from 'react';
 import {getMergeSortAnimations} from './SortingAlgorithms';
+import {getInsertionSortAnimations} from './SortingAlgorithms';
 import './SortingVisualizer.css';
 const FIRST_COLOR = 'purple';
 const SECOND_COLOR = 'white';
@@ -53,6 +54,27 @@ export default class SortingVisualizer extends React.Component{
           }
         }
     }
+  insertionSort(){
+    const animations = getInsertionSortAnimations(this.state.array);
+    for (let i = 0; i < animations.length; i++){
+      const arrayBars = document.getElementsByClassName('array-bar');
+      const isColorChange = i % 3 !== 2;
+      if (!isColorChange){
+        const [barIdx, newHeight] = animations[i]
+        const barStyle = arrayBars[barIdx].style;
+        setTimeout(() => {
+        barStyle.height = `${newHeight}px`;
+        }, i * this.state.animationSpeed);
+      } else {
+        setTimeout(() =>{
+          const [barOneIdx, barTwoIdx] = animations[i];
+          const barOneStyle = arrayBars[barOneIdx].style;
+          const color = i % 3 === 0 ? SECOND_COLOR : FIRST_COLOR;
+          barOneStyle.color = color;
+        }, i * this.state.animationSpeed)
+      }
+    }
+  }
 
     updateAnimationSpeed = (event) => {
         const newSpeed = parseInt(event.target.value, 10);
@@ -94,6 +116,7 @@ export default class SortingVisualizer extends React.Component{
               <div className="buttonBox">
             <button className="button" onClick={() => this.arrayReset()}>New Array</button>
             <button className="button" onClick={() => this.mergeSort()}>Merge Sort</button>
+            <button className="button" onClick={() => this.insertionSort()}>Insertion Sort</button>
             <p className="description">Loglinear Complexity: {secondValue}</p>
             <input className="customSlider" type="range" min="10" max="730" value={secondValue} onChange={this.updateSecondValue}></input>
             <p className="description">Elements: {numBars} </p>
